@@ -159,17 +159,28 @@ lesson 12 - First coding challenge
 BMI calculations
 */
 //declare your variable
-var markHeight, markMass, johnHeight, johnMass, markBmi, JohnBmi, biggerBmi;
-// assign variables
-markHeight = 2;
-markMass = 90;
-johnHeight = 2.2;
-johnMass = 99;
-// work out BMI with MASS / height squared
-markBmi = markMass / (markHeight * markHeight);
-console.log(markBmi);
-JohnBmi = johnMass / (johnHeight * johnHeight);
-console.log(JohnBmi);
-//Boolean values for who has the bigger BMI
-biggerBmi = markBmi >= JohnBmi;
-console.log('Is Mark\'s BMI bigger than John\'s? ' + biggerBmi);
+// var markHeight, markMass, johnHeight, johnMass, markBmi, JohnBmi, biggerBmi;
+// // assign variables
+// markHeight = 2;
+// markMass = 90;
+// johnHeight = 2.2;
+// johnMass = 99;
+// // work out BMI with MASS / height squared
+// markBmi = markMass / (markHeight * markHeight);
+// console.log(markBmi);
+// JohnBmi = johnMass / (johnHeight * johnHeight);
+// console.log(JohnBmi);
+// //Boolean values for who has the bigger BMI
+// biggerBmi = markBmi >= JohnBmi;
+// console.log('Is Mark\'s BMI bigger than John\'s? ' + biggerBmi);
+
+/***********
+lesson 13 - First coding challenge solution I got it right
+
+*/
+
+/***********
+lesson 14 - If / Else statements
+BMI calculations
+*/
+
