@@ -181,6 +181,224 @@ lesson 13 - First coding challenge solution I got it right
 
 /***********
 lesson 14 - If / Else statements
-BMI calculations
+
 */
 
+// // declaring variables
+// var firstName, civilStatus;
+// firstName = 'John';
+// civilStatus = 'single';
+// // add a logical expression - returns a boolean value
+// if (civilStatus === 'married'){
+//     console.log(firstName + ' is married');
+// } else {
+//     console.log(firstName + ' is single');
+// }
+
+// var isMarried = true;
+// // here the var isMarried is already true so there is no need to add another boolean below
+// if (isMarried){
+//     console.log(firstName + ' is married');
+// } else {
+//     console.log(firstName + ' is single');
+// }
+
+// // code from previous coding challenge (lesson 12)
+// //declare your variable
+// var markHeight, markMass, johnHeight, johnMass, markBmi, JohnBmi, biggerBmi;
+// // assign variables
+// markHeight = 2;
+// markMass = 90;
+// johnHeight = 2.2;
+// johnMass = 99;
+// // work out BMI with MASS / height squared
+// markBmi = markMass / (markHeight * markHeight);
+// JohnBmi = johnMass / (johnHeight * johnHeight);
+
+// // made the above challenge work with a conditional logic piece
+// if (markBmi > JohnBmi){
+//     console.log('Mark\'s BMI is higher than John\'s');
+// } else {
+//     console.log('John\'s BMI is higher than John\'s');
+// }
+
+/***********
+lesson 15 - Boolean logic
+
+*/
+
+// var firstName, age;
+// firstName = 'John';
+// age = 16;
+// // multiple else if statements with AND operators. SEE EVERNOTE FOR MORE on this. 
+
+// if (age < 13){ // simple less than operator
+//     console.log(firstName + ' is a boy');
+// } else if (age >= 13 && age < 20) { // checks if BOTH conditions are TRUE with AND operator 
+//     console.log(firstName + ' is a teenager');
+// } else if (age >= 20 && age < 30) {
+//     console.log(firstName + ' is a young man');
+// } else {
+//     console.log(firstName + ' is a man');
+// }
+
+/***********
+lesson 16 - The Ternary Operator and Switch Statements
+
+*/
+
+// var firstName, age;
+// firstName = 'John';
+// age = 16;
+
+// // Ternary Operator
+// age >= 18 ? console.log(firstName + ' drinks a beer') : console.log(firstName + ' drinks a juice');
+
+// // assigning a variable based off of some logic
+// var drink = age >= 18 ? 'beer' : 'juice';
+// console.log(firstName + ' can drink ' + drink);
+
+// // This is the same thing as above. 
+// // if (age >= 18){
+// //     var drink = 'beer';
+// // } else {
+// //     var drink = 'juice';
+// // }
+
+// // Switch Statements
+// var job = 'instructor';
+// switch (job){
+//     case 'teacher':
+//     case 'instructor':
+//         console.log(firstName + ' teaches kids how to code.');
+//         break;
+//     case 'driver':
+//         console.log(firstName + ' drives an Uber.');
+//         break;
+//     case 'designer':
+//         console.log(firstName + ' designs nice websites.');
+//         break;
+//     default:
+//         console.log(firstName + ' is fun employed.');
+// }
+
+// // code from lesson 15 rearranged as a switch statement rather than a if / else
+// // we compare each statement to true. what value in the var equates to true. does the logical expression equate to true based off of the value of age. 
+
+// age = 10;
+// switch (true) {
+//     case age < 13:
+//         console.log(firstName + ' is a boy');
+//         break;
+//     case age >= 13 && age < 20:
+//         console.log(firstName + ' is a teenager');
+//         break;
+//     case age >= 20 && age < 30:
+//         console.log(firstName + ' is a young man');
+//         break;
+//     default:
+//         console.log(firstName + ' is a man');
+// }
+
+/***********
+lesson 17 - Truthy and Falsy Values and Equality Operators
+
+*/
+// falsy values will be converted to flase in a boolean condition
+// falsy values are: undefined, null, empty stings '', 0, not a number NaN 
+
+// truthy values will be converted to true in a boolean condition
+// truthy values: NOT falsy values
+
+// var height;
+// height = 0; // this is a falsy value so we need to use a OR operator to avoid the value being rendered as false
+// if (height || height === 0){
+//     console.log('the variable has been defined');
+// } else {
+//     console.log('the variable has NOT been defined');
+// }
+
+// // Equality operators
+// // the height is defined as a number, but the condition compares the number to a string, with the non strict == equality operator this works. 
+// height = 23;
+// if (height == '23'){
+//     console.log('the not strict equality operator == does type coercion!');
+// }
+
+/***********
+lesson 18 - Challenge 2
+Basketball 
+
+*/
+var johnGame1, johnGame2, johnGame3, johnAverageScore, mikeGame1, mikeGame2, mikeGame3, mikeAverageScore, maryGame1, maryGame2, maryGame3, maryAverageScore;
+// COULD HAVE DONE IT LIKE THIS
+// var johnScore = (89 + 120 + 23) / 3
+johnGame1 = 89;
+johnGame2 = 120;
+johnGame3 = 23;
+
+// COULD HAVE DONE IT LIKE THIS
+// var mikeScore = (116 + 94 + 123) / 3
+mikeGame1 = 116;
+mikeGame2 = 94;
+mikeGame3 = 123;
+
+// COULD HAVE DONE IT LIKE THIS
+// var maryScore = (97 + 134 + 105) / 3
+maryGame1 = 97;
+maryGame2 = 134;
+maryGame3 = 105;
+
+// johnAverageScore = (johnGame1 + johnGame2 + johnGame3) / 3;
+// mikeAverageScore = (mikeGame1 + mikeGame2 + mikeGame3) / 3;
+// maryAverageScore = (maryGame1 + maryGame2 + maryGame3) / 3;
+johnAverageScore = 9;
+mikeAverageScore = 9;
+maryAverageScore = 8;
+
+if (johnAverageScore > mikeAverageScore && johnAverageScore > maryAverageScore){
+    console.log('John wins with an average score of ' + johnAverageScore);
+} else if (maryAverageScore > mikeAverageScore && maryAverageScore > johnAverageScore){
+    console.log('Mary wins with an average score of ' + maryAverageScore);
+} else if (mikeAverageScore > maryAverageScore && mikeAverageScore > johnAverageScore){
+    console.log('Mike wins with an average score of ' + mikeAverageScore);
+} else if (johnAverageScore === mikeAverageScore && johnAverageScore === maryAverageScore) {
+    console.log('it was a draw mike\'s average score was ' + mikeAverageScore + ' and john\'s average score was ' + johnAverageScore + ' and mary\'s average score was ' + maryAverageScore);
+} else {
+    console.log('something else happend');
+}
+
+/***********
+lesson 19 - Challenge 2 - Solution
+Basketball 
+
+*/
+// // COULD HAVE DONE IT LIKE THIS
+// var maryScore = (97 + 134 + 105) / 3;
+// var mikeScore = (116 + 94 + 123) / 3;
+// var johnScore = (89 + 120 + 23) / 3;
+// console.log(mikeScore, johnScore, maryScore);
+
+// if (johnScore > mikeScore && johnScore > maryScore) {
+//     console.log('John wins');
+// } else if (mikeScore > johnScore && mikeScore > maryScore) {
+//     console.log('Mike wins');
+// } else if (maryScore > johnScore && maryScore > mikeScore) {
+//     console.log('Mary wins');
+// } else {
+//     console.log('there was a draw');
+// }
+
+// // Below compares just mike and John
+// // if (mikeScore > johnScore) {
+// //     console.log('Mike wins');
+// // } else if (johnScore > mikeScore) {
+// //     console.log('John wins') 
+// // } else {
+// //     console.log('it was a draw');
+// // }
+
+/***********
+lesson 20 - Functions
+
+*/
