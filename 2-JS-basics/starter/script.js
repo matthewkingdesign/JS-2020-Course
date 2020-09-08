@@ -653,39 +653,39 @@ lesson 27 = Coding Challenge 4 - BMI in objects
 
 */
 
-var john = {
-    firstName:'John',
-    secondName: 'Smith',
-    height: '1.69',
-    mass: 79,
-    calcBMI: function(){
-        this.BMI = this.mass / (this.height * this.height);
-        return this.BMI;
-    }  
-};
-var mark = {
-    firstName:'Mark',
-    secondName: 'Davis',
-    height: '1.80',
-    mass: 80,
-    calcBMI: function(){
-        this.BMI = this.mass / (this.height * this.height);
-        return this.BMI; // by returning th value here you can calculate and read at the same time when you call the function!
-    }  
-};
-// john.calcBMI(); // You can use this in the logical comparesent 
-// mark.calcBMI();
-// console.log(john, mark);
-// you only need to call the calcBMI once, then it is readable. 
-if (john.calcBMI() > mark.calcBMI()){
-    console.log(john.firstName + ' has a greater BMI with ' + john.BMI );
-} else if (mark.BMI > john.BMI){
-    console.log(mark.firstName + ' has a greater BMI with ' + mark.BMI );
-} else {
-    console.log('they have the same BMI')
-}
+// var john = {
+//     firstName:'John',
+//     secondName: 'Smith',
+//     height: '1.69',
+//     mass: 79,
+//     calcBMI: function(){
+//         this.BMI = this.mass / (this.height * this.height);
+//         return this.BMI;
+//     }  
+// };
+// var mark = {
+//     firstName:'Mark',
+//     secondName: 'Davis',
+//     height: '1.80',
+//     mass: 80,
+//     calcBMI: function(){
+//         this.BMI = this.mass / (this.height * this.height);
+//         return this.BMI; // by returning th value here you can calculate and read at the same time when you call the function!
+//     }  
+// };
+// // john.calcBMI(); // You can use this in the logical comparesent 
+// // mark.calcBMI();
+// // console.log(john, mark);
+// // you only need to call the calcBMI once, then it is readable. 
+// if (john.calcBMI() > mark.calcBMI()){
+//     console.log(john.firstName + ' has a greater BMI with ' + john.BMI );
+// } else if (mark.BMI > john.BMI){
+//     console.log(mark.firstName + ' has a greater BMI with ' + mark.BMI );
+// } else {
+//     console.log('they have the same BMI')
+// }
 /***********
-lesson 27 = Coding Challenge 4 - BMI in objects Solution
+lesson 28 = Coding Challenge 4 - BMI in objects Solution
 
 I solved it, but got the calc the wrong way around and passed the mass and heihgt to the function. BUT it could have been empty.
 
@@ -697,4 +697,185 @@ function(mass, height)
 
 and 
 i didnt return the value...didnt need to?
+by returning it you can call it within the if else*/
+
+/***********
+lesson 29 = Loops and Iteration
+
 */
+
+// for (var i = 0; i < 10; i++){
+//     console.log(i);
+// }
+// // var i = 0, is 0 < 10 true, log i to the console 0 + 1...start again
+// // var i = 1, is 1 < 10 true, log i to the console 1+ 1...start again
+// //...
+// // var i = 9, is 9 < 10 true, log i to the console 1+ 1...start again
+// // var i = 10, is 10 < 10 FALSE, exit the loop 
+
+// for (var i = 1; i <= 20; i++){
+//     console.log(i);
+// }
+// for (var i = 1; i <= 20; i+=2){
+//     console.log(i);
+// }
+
+// I did this based on another piece of code. Using the method . length and comparing i to that length. GOT IT RIGHT
+
+// // for loop handling this
+// var john = ['John', 'Smith', 1990, 'teacher', false];
+// for (var i = 0; i < john.length; i++){
+//     console.log(john[i]);
+// }
+
+// set the var outside the while loop, execute the increment inside the while block
+// easier to use the for loop
+// var i = 0
+// while (i < john.length){
+//     console.log(john[i]);
+//     i++;
+// }
+
+// Continue and break statements
+
+// Continue
+// here we compare the typeof value, and see if its NOT a string using !== strict inequality. we then say continue if it isnt a string. we also have a single line if statement without {}
+// to change string to number etc you still have to put it into '' for type coercion. so 'number' becomes the number value
+// if john i is NOT a string, continue to the end of the loop.
+// var john = ['John', 'Smith', 1990, 'teacher', false];
+// for (var i = 0; i < john.length; i++){
+//     if (typeof john[i] !== 'string') continue;
+//     console.log(john[i]);
+// }
+
+// // Break
+// // now the loop breaks or exits itself when it reaches something that is NOT (!==) a string
+// var john = ['John', 'Smith', 1990, 'teacher', false];
+// for (var i = 0; i < john.length; i++){
+//     if (typeof john[i] !== 'string') break;
+//     console.log(john[i]);
+// }
+
+// looping backwards
+
+// for (i = john.length - 1; i >= 0; i--){
+//     console.log(john[i]);
+// }
+
+/*****************************
+* CODING CHALLENGE 5
+*/
+
+/*
+Remember the tip calculator challenge? Let's create a more advanced version using everything we learned!
+
+This time, John and his family went to 5 different restaurants. The bills were $124, $48, $268, $180 and $42.
+John likes to tip 20% of the bill when the bill is less than $50, 15% when the bill is between $50 and $200, and 10% if the bill is more than $200.
+
+Implement a tip calculator using objects and loops:
+1. Create an object with an array for the bill values
+2. Add a method to calculate the tip
+3. This method should include a loop to iterate over all the paid bills and do the tip calculations
+4. As an output, create 1) a new array containing all tips, and 2) an array containing final paid amounts (bill + tip). HINT: Start with two empty arrays [] as properties and then fill them up in the loop.
+
+
+EXTRA AFTER FINISHING: Mark's family also went on a holiday, going to 4 different restaurants. The bills were $77, $375, $110, and $45.
+Mark likes to tip 20% of the bill when the bill is less than $100, 10% when the bill is between $100 and $300, and 25% if the bill is more than $300 (different than John).
+
+5. Implement the same functionality as before, this time using Mark's tipping rules
+6. Create a function (not a method) to calculate the average of a given array of tips. HINT: Loop over the array, and in each iteration store the current sum in a variable (starting from 0). After you have the sum of the array, divide it by the number of elements in it (that's how you calculate the average)
+7. Calculate the average tip for each family
+8. Log to the console which family paid the highest tips on average
+
+GOOD LUCK 😀
+*/
+
+
+/*****************************
+* lesson 30 CODING CHALLENGE 5
+Didn't get this one. Bit tired. Wasnt 100% sure about the concepts. So lots of notes and revison needed
+*/
+
+// Create John object with array of bills. You could have put the empty arrays in the object rather than the objects method. but we havent here. 
+var john = {
+    fullNmae: 'John Smith',
+    bills: [124, 48, 268, 180, 42],
+    calcTip: function(){
+        // Set empty arrays to be filled here when the method is called these are added to the John Objext
+        this.tips = [];
+        this.finalValues = [];
+        // read the value bills for THIS object and grab its length. thats the 'range' of the for loop
+        for (var i = 0; i < this.bills.length; i++){
+            // determine percentage based on tipping rules
+            // set an empty var percentage which gets filled dependant on the if else if else statement below.
+            var percentage;
+            //declare bill var which STORES the this.bills at position i which will run in the for loop. 
+            var bill =  this.bills[i];
+            // if else if else to determine what percentage to apply
+            if (bill < 50) {
+                percentage = .2;
+            } else if (bill >= 50 && bill < 200) {
+                percentage = .15;
+            } else {
+                percentage = .1;
+            }
+
+
+            // Add result to coresponding array
+            // Here fill teh arrays declared above. by using the [i] we SAVE or STORE or APPENED to this.tips with each individual value
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill + bill * percentage;
+
+        }
+    }
+};
+// All of this is the same logic, different values. 
+var mark = {
+    fullName: 'Mark Miller',
+    bills: [77, 475, 110, 45],
+    calcTips: function() {
+        this.tips = [];
+        this.finalValues = [];
+                
+        for (var i = 0; i < this.bills.length; i++) {
+            // Determine percentage based on tipping rules
+            var percentage;
+            var bill = this.bills[i];
+            
+            if (bill < 100) {
+                percentage = .2;
+            } else if (bill >= 100 && bill < 300) {
+                percentage = .1;
+            } else {
+                percentage = .25;
+            }
+            
+            // Add results to the corresponing arrays
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill + bill * percentage;
+        }
+    }
+}
+function calcAverage(tips) {
+    var sum = 0;
+    for (var i = 0; i < tips.length; i++){
+        sum = sum + tips[i];
+    }
+    return sum / tips.length;
+}
+
+// call the calculations
+mark.calcTips();
+john.calcTip();
+// store the calcAverage result in the array john. pass calcAverage Johns Tips
+john.average = calcAverage(john.tips);
+mark.average = calcAverage(mark.tips);
+console.log(john, mark);
+
+if (john.average > mark.average) {
+    console.log(john.fullName + '\'s family pays higher tips, with an average of $' + john.average);
+} else if (mark.average > john.average) {
+    console.log(mark.fullName + '\'s family pays higher tips, with an average of $' + mark.average);
+}
+
+// Need to track back on this tomorrow morning and take a look at it again. 
