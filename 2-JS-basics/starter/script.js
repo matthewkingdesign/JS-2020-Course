@@ -581,30 +581,120 @@ lesson 25 = Objects and properties
 // Objects order doesnt matter where as arrays it does.
 // key names are paired with values
 // first name is a property of the john object
+
+// // Object literal
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Smith',
+//     birthYear: 1990,
+//     family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//     job: 'Teacher',
+//     isMarried: false
+// };
+// // use . syntax to access properties
+// console.log(john.firstName);
+// // [] syntax to access properties
+// console.log(john['lastName']);
+// // Save birthyear keyname propety pair in a variable and call it
+// var x = 'birthYear';
+// console.log(john[x]);
+
+// // Mutate the Object
+// john.job = 'designer';
+// john['isMarried'] = true;
+
+// console.log(john);
+
+// // new Object syntax
+// // uses new statement then keyword Object both . syntax and [] syntax
+// var jane = new Object();
+// jane.firstName = 'Jane';
+// jane.lastName = 'Smith';
+// jane['birthYear'] = 1991;
+// console.log(jane);
+
+/***********
+lesson 26 = Objects and Methods
+
+*/
+ // here a function is attached to the keyname and becomes a method of the john object
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Smith',
+//     birthYear: 1991,
+//     family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//     job: 'Teacher',
+//     isMarried: false,
+//     calcAge: function(birthYear){
+//         return 2020 - this.birthYear;
+//     }
+// };
+// console.log(john.calcAge());
+// console.log(john);
+
+// Above can be written much better:
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Smith',
+//     birthYear: 1991,
+//     family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//     job: 'Teacher',
+//     isMarried: false,
+//     calcAge: function(birthYear){
+//         this.age = 2020 - this.birthYear;
+//     }
+// };
+// john.calcAge();
+// console.log(john);
+
+
+/***********
+lesson 27 = Coding Challenge 4 - BMI in objects
+
+*/
+
 var john = {
-    firstName: 'John',
-    lastName: 'Smith',
-    birthYear: 1990,
-    family: ['Jane', 'Mark', 'Bob', 'Emily'],
-    job: 'Teacher',
-    isMarried: false
+    firstName:'John',
+    secondName: 'Smith',
+    height: '1.69',
+    mass: 79,
+    calcBMI: function(){
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }  
 };
-// use . syntax to access properties
-console.log(john.firstName);
-// [] syntax to access properties
-console.log(john['lastName']);
-// Save birthyear keyname propety pair in a variable and call it
-var x = 'birthYear';
-console.log(john[x]);
+var mark = {
+    firstName:'Mark',
+    secondName: 'Davis',
+    height: '1.80',
+    mass: 80,
+    calcBMI: function(){
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI; // by returning th value here you can calculate and read at the same time when you call the function!
+    }  
+};
+// john.calcBMI(); // You can use this in the logical comparesent 
+// mark.calcBMI();
+// console.log(john, mark);
+// you only need to call the calcBMI once, then it is readable. 
+if (john.calcBMI() > mark.calcBMI()){
+    console.log(john.firstName + ' has a greater BMI with ' + john.BMI );
+} else if (mark.BMI > john.BMI){
+    console.log(mark.firstName + ' has a greater BMI with ' + mark.BMI );
+} else {
+    console.log('they have the same BMI')
+}
+/***********
+lesson 27 = Coding Challenge 4 - BMI in objects Solution
 
-// Mutate the Object
-john.job = 'designer';
-john['isMarried'] = true;
+I solved it, but got the calc the wrong way around and passed the mass and heihgt to the function. BUT it could have been empty.
 
-console.log(john);
+I did:
+(this.height * this.height) / this.mass;
 
-var jane = new Object();
-jane.firstName = 'Jane';
-jane.lastName = 'Smith';
-jane.birthYear = 1991;
-console.log(jane);
+and
+function(mass, height)
+
+and 
+i didnt return the value...didnt need to?
+*/
