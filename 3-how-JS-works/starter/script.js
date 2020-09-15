@@ -104,7 +104,7 @@ console.log(age);
 var age = 23;
 // console.log(age);
 
-// this function foo gets its own variable object in its own execution context object
+// this variabel age is seperate as it is withing its own variable object within the function foo which gets its own execution context object
 function foo(){
     var age = 65;
     // this console log will print 65
