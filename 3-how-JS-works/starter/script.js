@@ -77,6 +77,7 @@ Execution context object
 // We can call the function before declaring it as the function will be avaliable in the creation phase before the execution phase.
 // In the creation phase of the execution context (global context in this case) the function decleration calculateAge is stored in the variable object.
 // so it is avaliable before the executiuon phase.
+
 // calculateAge(1954);
 // // declare function
 // function calculateAge(year){
@@ -145,37 +146,74 @@ Execution context object
 // Example to show the differece between execution stack and scope chain
 
 
-var a = 'Hello!';
-first();
+// var a = 'Hello!';
+// first();
 
-function first() {
-    var b = 'Hi!';
-    second();
+// function first() {
+//     var b = 'Hi!';
+//     second();
     
 
-    function second() {
-        var c = 'Hey!';
-        third()
-        // console.log(a);
-    }
-}
+//     function second() {
+//         var c = 'Hey!';
+//         third()
+//         // console.log(a);
+//     }
+// }
 
-function third() {
-    var d = 'John';
-    console.log(a); // only a and d are avaliable here as theya re within the gloabal scope chain
-}
+// function third() {
+//     var d = 'John';
+//     console.log(a); // only a and d are avaliable here as theya re within the gloabal scope chain
+// }
 
 
 
 
 ///////////////////////////////////////
 // Lecture: The this keyword
+// Each execution context gets a this variable and is stored in the execution context object
+// In a regular function the this keyword points to the global object (window object in the browser)
+// Method call the this var points to the object that is calling the method
+// the this keyword is not assigned a value until a function where it is defined is actually called
 
+//log this for the global execution context
+// console.log(this); // this wil log the window object
 
+// function calculateAge(year){
+//     console.log(2016 - year);
+//     console.log(this); // this wil log the window object as it is within a regular function call not an object method
+// }
 
+// calculateAge(1990);
 
+var john = {
+    name: 'John',
+    yearOfBirth: 1990,
+    calculateAge: function(){
+        console.log(this); // this is logged as the object as it is within a method 
+        console.log(this.yearOfBirth); // this will log the year of birth var within th john object
+        console.log(2016 - this.yearOfBirth); // calculates the age
 
+        // although this function is written inside the john Object it is not a method. So it is a 
+        // regular function expression thus renders the window object.
 
+        function innerFunction () { 
+            console.log(this);
+        }
+        innerFunction();
+    }
+};
+john.calculateAge();
+
+var mike = {
+    name: 'Mike',
+    yearOfBirth: 1984
+};
+// here we are treating the calcualteAgfe mike as a variable, which is johns calculate Age method. Declaring the var as a function
+mike.calculateAge = john.calculateAge;
+// now we call it with ()
+// this is nopw associated with Mikes object as that is when the this var gets its value. When the object is called. So it is dynamic.
+mike.calculateAge();
 
 
 
