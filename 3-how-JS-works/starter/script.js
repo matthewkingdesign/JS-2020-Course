@@ -77,87 +77,94 @@ Execution context object
 // We can call the function before declaring it as the function will be avaliable in the creation phase before the execution phase.
 // In the creation phase of the execution context (global context in this case) the function decleration calculateAge is stored in the variable object.
 // so it is avaliable before the executiuon phase.
-calculateAge(1954);
-// declare function
-function calculateAge(year){
-    console.log(2020 - year);
-}
-// We can call the function after declaring it 
-// calculateAge(1991);
+// calculateAge(1954);
+// // declare function
+// function calculateAge(year){
+//     console.log(2020 - year);
+// }
+// // We can call the function after declaring it 
+// // calculateAge(1991);
 
 
-// function expression
-// call the function above does not work as hoisting only applies to function declerations
+// // function expression
+// // call the function above does not work as hoisting only applies to function declerations
+// // retirement(1991);
+// var retirement = function(year){
+//     console.log(65 - (2020 - year));
+// }
+// // call the function below and it works
 // retirement(1991);
-var retirement = function(year){
-    console.log(65 - (2020 - year));
-}
-// call the function below and it works
-retirement(1991);
 
-// variables and Hoisting
-// log the age var before it is declared and it will be undefined 
+// // variables and Hoisting
+// // log the age var before it is declared and it will be undefined 
 
-// this console log will print undefined as within the global execution context object
-console.log(age);
-// now the var is stored in the variable object in the global execution context object
-var age = 23;
+// // this console log will print undefined as within the global execution context object
 // console.log(age);
+// // now the var is stored in the variable object in the global execution context object
+// var age = 23;
+// // console.log(age);
 
-// this variabel age is seperate as it is withing its own variable object within the function foo which gets its own execution context object
-function foo(){
-    var age = 65;
-    // this console log will print 65
-    console.log(age);
-}
-foo();
-// this console log will print 23 as it is being called from the global execution context object
-console.log(age);
+// // this variabel age is seperate as it is withing its own variable object within the function foo which gets its own execution context object
+// function foo(){
+//     var age = 65;
+//     // this console log will print 65
+//     console.log(age);
+// }
+// foo();
+// // this console log will print 23 as it is being called from the global execution context object
+// console.log(age);
 
 ///////////////////////////////////////
 // Lecture: Scoping
 
+// Scoping answers the question 'where can we access variables from?'
+// Each new function creates a scope: the space / environment in which the vars are accessible 
+// Only functions create new scopes. NOT if blocks, for blocks...like in other languages 
+// JS has Lexical Scoping which means that a funvtion within a function has access to the outers (parents) functions variables
+
 
 // First scoping example
 
-/*
-var a = 'Hello!';
-first();
 
-function first() {
-    var b = 'Hi!';
-    second();
+// var a = 'Hello!'; // global scope - a is accessible to all functions
+// first();
 
-    function second() {
-        var c = 'Hey!';
-        console.log(a + b + c);
-    }
-}
-*/
+// function first() { // first scope b is accesoble within this, but not the global
+//     var b = 'Hi!';
+//     second();
+
+//     function second() { // second scope. c is declared here and a is accesible as it is global, b is withing the parent so lexically accesible 
+//         var c = 'Hey!';
+//         console.log(a + b + c); 
+//     }
+// }
+
 
 
 
 // Example to show the differece between execution stack and scope chain
 
-/*
+
 var a = 'Hello!';
 first();
 
 function first() {
     var b = 'Hi!';
     second();
+    
 
     function second() {
         var c = 'Hey!';
         third()
+        // console.log(a);
     }
 }
 
 function third() {
     var d = 'John';
-    console.log(a + b + c + d);
+    console.log(a); // only a and d are avaliable here as theya re within the gloabal scope chain
 }
-*/
+
 
 
 
