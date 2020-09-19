@@ -41,7 +41,23 @@ We will learn
 /******************************************************
  Lecture 50 -  Updating Scores and Changing the Active Player
 
+ What we will learn
+    - What the ternary operator is
+    - How to add remove and toggle HTML classes
+
 */
+
+/******************************************************
+ Lecture 51 -  Implementing Our 'Hold' Function and the DRY Principle
+
+ What we will learn
+    - How to use functions to coreectly apply the DRY (dont repeat yourself) principle 
+    - How to think of the game logic like a programmer
+
+*/
+
+
+
 // important variables
 var scores, roundScore, activePlayer;
 scores = [0,0];
@@ -69,13 +85,39 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 
 
     // 3. Update the round score IF the rolled number was NOT a 1
+    if (dice !== 1){
+        // Add score
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent= roundScore;
+    } else {
+        // Next player
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0;
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+        diceDom.style.display = ('none');
+    }
+});
+
+document.querySelector('btn-hold').addEventListener('click', function(){
+    // Add current score to global score
+    
+    
+
+    // Update the UI
 
 
-
+    // Check if the player won the game
 });
 
 /******************************************************
 RANDOM BITS OF CODE THAT WE ARENT USING BUT ARE EXAMPLES OF WHAT WE CAN DO.
+// Class list methods
+document.querySelector('.player-0-panel').classList.remove('active');
+document.querySelector('.player-1-panel').classList.add('active');
+
 
 // Call the document object. add queryselctor method with the ID and type cohersion then .textContent change the PLAIN TEXT to the value of dice
 // document.querySelector('#current-' + activePlayer).textContent = dice;
