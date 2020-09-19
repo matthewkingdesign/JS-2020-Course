@@ -42,7 +42,37 @@ We will learn
  Lecture 50 -  Updating Scores and Changing the Active Player
 
 */
+// important variables
+var scores, roundScore, activePlayer;
+scores = [0,0];
+roundScore = 0;
+activePlayer = 0;
 
+// Here we are selcting the img with the class dice, then changing the css using the style method.property you want to change = 'new value in a string'
+document.querySelector('.dice').style.display = 'none';
+// set the scores to 0 with textContent
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+
+// This is an Anonymous function function has no name and is only withing the addEventListner function.
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    // 1. Random number 
+   var dice = Math.floor(Math.random()*6) + 1;
+
+
+    // 2. Display the result
+    var diceDom = document.querySelector('.dice');
+    diceDom.style.display = 'block';
+    diceDom.src = 'dice-' + dice + '.png';
+
+
+    // 3. Update the round score IF the rolled number was NOT a 1
+
+
+
+});
 
 /******************************************************
 RANDOM BITS OF CODE THAT WE ARENT USING BUT ARE EXAMPLES OF WHAT WE CAN DO.
@@ -69,38 +99,3 @@ RANDOM BITS OF CODE THAT WE ARENT USING BUT ARE EXAMPLES OF WHAT WE CAN DO.
 // document.querySelector('.btn-roll').addEventListener('click', btn);
 
 */
-
-
-
-
-// important variables
-var scores, roundScore, activePlayer;
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
-
-// Here we are selcting the img with the class dice, then changing the css using the style method.property you want to change = 'new value in a string'
-document.querySelector('.dice').style.display = 'none';
-
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
-
-// This is an Anonymous function function has no name and is only withing the addEventListner function.
-document.querySelector('.btn-roll').addEventListener('click', function(){
-    // 1. Random number 
-   var dice = Math.floor(Math.random()*6) + 1;
-
-
-    // 2. Display the result
-    var diceDom = document.querySelector('.dice');
-    diceDom.style.display = 'block';
-    diceDom.src = 'dice-' + dice + '.png';
-
-
-    // 3. Update the round score IF the rolled number was NOT a 1
-
-
-
-});
