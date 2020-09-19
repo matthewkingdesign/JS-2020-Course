@@ -13,37 +13,94 @@ GAME RULES:
  Lecture 48 - First DOM Access and Manipulation
     
  We will Learn:
- - How to create our fundamental game variables 
- - How to generate a random number 
- - How to manipulate the DOM
- - How to read the DOM
- - How to change css styles
+    - How to create our fundamental game variables 
+    - How to generate a random number 
+    - How to manipulate the DOM
+    - How to read the DOM
+    - How to change css styles
  
 */
 
-// important variables
+/******************************************************
+ Lecture 49 -  Events and Event Handling: Rolling the Dice
+    
+ Events: Notifications that are sent to notify the code that something has happened on the webpage 
+    - Examples - clicking a button, resizing a window, scrolling down or pressing a key
+    - Event listeners are functions that perform an action based on a certain event. They wait for a certain event to happen.
+    - Event listeners are functions so they get there own execution stack
+    - MOved dice var into click event listner
+    
+We will learn
+    - How to setup an event handler
+    - What a callback function is 
+    - What an anonymous functio is
+    - Another way to select elements by ID
+    - How to change the image in an <img> element
+ 
+*/
+/******************************************************
+ Lecture 50 -  Updating Scores and Changing the Active Player
 
-var scores, roundScore, activePlayer, dice;
+*/
 
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
 
-dice = Math.floor(Math.random()*6) + 1;
-// console.log(dice);
+/******************************************************
+RANDOM BITS OF CODE THAT WE ARENT USING BUT ARE EXAMPLES OF WHAT WE CAN DO.
 
-//call the document object. add queryselctor method with the ID and type cohersion then .textContent change the PLAIN TEXT to the value of dice
+// Call the document object. add queryselctor method with the ID and type cohersion then .textContent change the PLAIN TEXT to the value of dice
 // document.querySelector('#current-' + activePlayer).textContent = dice;
 
 // Do the same but with the innerHTML method whih need to have a string of HTML passed through it
 // document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'; // open and close html elements with the dice var inside so that would render <em>6</em>
 
 // We are happy to use plainText as it will have the style of the div.
-document.querySelector('#current-' + activePlayer).textContent = dice;
+// document.querySelector('#current-' + activePlayer).textContent = dice;
 
-// this bit of code reads the DOM and stores the text content value of the query selected the DIV with the ID of Score-0 and stored it in x. the log x
-var x = document.querySelector('#score-0').textContent;
-console.log(x);
+// This bit of code reads the DOM and stores the text content value of the query selected the DIV with the ID of Score-0 and stored it in x. the log x
+// var x = document.querySelector('#score-0').textContent;
+// console.log(x);
+// Event handler - Lecture 49
+
+// Call back
+// you could declare a function externally at the end of the addEventListner function and it would be a call back. So a function called by another function. Example below
+// function btn(){
+//     //DO SOMETHING
+// }
+// document.querySelector('.btn-roll').addEventListener('click', btn);
+
+*/
+
+
+
+
+// important variables
+var scores, roundScore, activePlayer;
+scores = [0,0];
+roundScore = 0;
+activePlayer = 0;
 
 // Here we are selcting the img with the class dice, then changing the css using the style method.property you want to change = 'new value in a string'
 document.querySelector('.dice').style.display = 'none';
+
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+
+// This is an Anonymous function function has no name and is only withing the addEventListner function.
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    // 1. Random number 
+   var dice = Math.floor(Math.random()*6) + 1;
+
+
+    // 2. Display the result
+    var diceDom = document.querySelector('.dice');
+    diceDom.style.display = 'block';
+    diceDom.src = 'dice-' + dice + '.png';
+
+
+    // 3. Update the round score IF the rolled number was NOT a 1
+
+
+
+});
