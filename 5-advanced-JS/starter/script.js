@@ -60,3 +60,57 @@ When we try and access a property or methos JS will look for the the method or p
 
 */
 
+// Function canstructor
+
+// object expression
+// var john = {
+//     name: 'John',
+//     yearOfBirth: 1990,
+//     job: 'teacher'
+// };
+
+// Function Constructor, always have capitals as there name. 
+
+// we use this to attach the varibales to this variables execution context. 
+// var Person = function(name, yearOfBirth, job){
+//     // so this name is = the name we pass in the parameter when we call it
+//     this.name = name;
+//     this.yearOfBirth = yearOfBirth;
+//     this.job = job;
+// }
+// // this is now accessible as it is withing the Person prototype property.
+// Person.prototype.calculateAge = function(){
+//     console.log(2020 - this.yearOfBirth);
+// }
+// Person.prototype.lastName = 'Smith';
+// // So create instances of the Person object like:
+// // The new operator creates a new empty object 
+// // After that the constructor function is called with the arguments we specify
+// // So the function is called and a new execution context is created which means that this works within that new execution context, not the global execution context. 
+// var john = new Person('John', 1990, 'Teacher');
+// var dave = new Person('Dave', 1960, 'Designer');
+// var jane = new Person('Jane', 1948, 'Retired');
+
+// john.calculateAge();
+// dave.calculateAge();
+// jane.calculateAge();
+
+// console.log(john.lastName);
+// console.log(dave.lastName);
+// console.log(jane.lastName);
+// console.log(john);
+
+/******************************************************
+ Lecture 62 - The Prototype Chain in the Console
+
+ Worth going over again but you can look at a lot of stuff in the console. 
+ It helps to understand inhertiance and the prototypes of different objects.
+
+*/
+
+/******************************************************
+ Lecture 63 - Creating Objects: Object.create
+
+*/
+
+//
