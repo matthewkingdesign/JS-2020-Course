@@ -113,4 +113,21 @@ When we try and access a property or methos JS will look for the the method or p
 
 */
 
-//
+// Object.create
+
+// var personProto = {
+//     calculateAge: function() {
+//         console.log(2020 - this.yearOfBirth);
+//     }
+// };
+
+// var john = Object.create(personProto);
+// john.name = 'John';
+// john.yearOfBirth = 1990;
+// john.job = 'teaher';
+
+// var jane = Object.create(personProto, {
+//     name: {value: 'Jane'},
+//     yearOfBirth: {value: 1960},
+//     job: {value: 'Designer'}
+// });
