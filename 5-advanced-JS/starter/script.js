@@ -131,3 +131,99 @@ When we try and access a property or methos JS will look for the the method or p
 //     yearOfBirth: {value: 1960},
 //     job: {value: 'Designer'}
 // });
+
+/******************************************************
+ Lecture 64 - Primitives vs. Objects
+
+*/
+// // Primitives
+// // declare a var
+// var a = 23;
+// // make b = a
+// var b = a;
+// // mutate a, this wont effect b
+// a = 46;
+
+// console.log(a);
+// console.log(b);
+// //Objects
+// // create a new object
+// var obj1 = {
+//     name: 'John',
+//     age: 26
+// };
+// // we havent created a new object here, simply referenced an object
+// var obj2 = obj1;
+// obj1.age = 30;
+// // the age will be the same
+// console.log(obj1.age);
+// console.log(obj2.age);
+
+// // Functions
+// var age = 27;
+// var obj = {
+//     name: 'Jonas',
+//     city: 'Lisbon'
+// }
+
+// function change(a, b){
+//     a = 38;
+//     b.city = 'San Fran';
+// }
+
+// change(age, obj);
+
+// console.log(age);
+// console.log(obj.city);
+/******************************************************
+ Lecture 65 - First Class Functions: Passing Functions as Arguments
+
+*/
+// Functions are instances of the Object type
+// A function behaves like any other Object
+// We can store functions in a variable
+// We can pass a function as an argument to another function
+// We can return a function from a function
+
+// var years = [1990, 1965, 1937, 2005, 1998];
+// // when we call this function we pass it the array - years, this then becomes the array used by the arr parameter. 
+
+// // the fn parameter we pass the calculate age function, this is a call back funciton and has no parentheses as we want it to be called by the the arrRes.push method. 
+// function arrayCalc(arr, fn) {
+//     var arrRes = [];
+//     for (var i = 0; i < arr.length; i++){
+//         arrRes.push(fn(arr[i]));
+//     }
+//     return arrRes;
+// }
+// // This is our callback function (fn)
+// function calculateAge(el) {
+//     return 2016 - el;
+// }
+// // create another callback function this one checks if the age is older tha
+// function isFullAge(el){
+//     return el >= 18;
+// }
+// function maxHeartRate(el) {
+//     if (el >= 18 && el <= 81){
+//         return Math.round(206.9 - (0.67 * el));
+//     } else {
+//         return -1;
+//     }
+    
+// }
+// // Store the results of the arrayCalc function with years as the array anf calculateAge as the callback funciton 
+//  var ages = arrayCalc(years, calculateAge);
+
+//  // Here we are using the result of the first time we run arrayCalc which has given us an array and we have stored it in the ages var
+//  var fullAges = arrayCalc(ages, isFullAge);
+
+
+//  var heartRates = arrayCalc(ages, maxHeartRate);
+//  // Log results
+//  console.log(ages);
+//  console.log(fullAges);
+//  console.log(heartRates);
+
+
+
