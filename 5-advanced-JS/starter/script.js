@@ -256,13 +256,63 @@ When we try and access a property or methos JS will look for the the method or p
  Lecture 67 - Immediately Invoked Function Expressions (IIFE)
 
 */
-function game (){
-    var score = Math.random() * 10;
-    console.log(score >= 5);
-}
-game();
+// this is a function decleration. so it gets a name and its own execution context
+// function game (){
+//     var score = Math.random() * 10;
+//     console.log(score >= 5);
+// }
+// game();
+// this is an IIFE which is a trick on the paraser into thinking it is a function expression by wrapping it in parathesis 
+// IN JS everything inside parentasis are expressions, not statements or declerations
+// IIFE will make private data, you cannot get the data in variables stored in these functions from any other scope. 
+// (function() {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5);
+// })();
+// // here we add an input and call it. 
+// (function(goodLuck) {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5 - goodLuck);
+// })(5);
 
-(function() {
-    var score = Math.random() * 10;
-    console.log(score >= 5);
-})();
+/******************************************************
+ Lecture 68 - Closures
+ 
+ - An inner function always has access to the variables and parameters of its outer function, even after the outer function has finished. 
+
+*/
+
+// The inner function here has access to the variable a and the parameter retirementAge even though the outer function has returned / finished.
+// function retirement(retirementAge){
+//     var a = ' years left until retirement.';
+//     return function(yearOfBirth) {
+//         var age = 2020 - yearOfBirth;
+//         console.log((retirementAge - age) + a);
+//     }
+// }
+
+// var retirementUS = retirement(66);
+// var retirementIce = retirement(65);
+// var retirementGerm = retirement(67);
+// retirementUS(1991);
+// retirementIce(1991);
+// retirementGerm(1991);
+// // retirement(65)(1991);
+
+// function interviewQuestion(job) {
+//     return function(name) {
+//         if (job === 'designer') {
+//             console.log(name + ', can you please explain what UX design is?');
+//         } else if (job === 'teacher') {
+//             console.log('What subject do you teach, ' + name + '?');
+//         } else {
+//             console.log('Hello ' + name + ', what do you do?');
+//         }
+//     }
+// }
+// interviewQuestion('teacher')('John');
+
+/******************************************************
+ Lecture 69 - Bind, Call and Apply
+ 
+*/
