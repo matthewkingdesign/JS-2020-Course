@@ -228,25 +228,41 @@ When we try and access a property or methos JS will look for the the method or p
  Lecture 66 -  First Class Functions: Functions Returning Functions
 
 */
-function interviewQuestion(job){
-    if(job === 'designer') {
-        return function(name){
-            console.log(name + ', can you please explain what UX is');
-        }
-    } else if (job === 'teacher'){
-        return function(name){
-            console.log('What subject do you teach, ' + name + '?');
-        }
-    } else {
-        return function(name) {
-            console.log('Hello ' + name + ', what do you do?');
-        }
-    }
+// function interviewQuestion(job){
+//     if(job === 'designer') {
+//         return function(name){
+//             console.log(name + ', can you please explain what UX is');
+//         }
+//     } else if (job === 'teacher'){
+//         return function(name){
+//             console.log('What subject do you teach, ' + name + '?');
+//         }
+//     } else {
+//         return function(name) {
+//             console.log('Hello ' + name + ', what do you do?');
+//         }
+//     }
+// }
+
+// var teacherQuestion = interviewQuestion('teacher');
+// var designerQuestion = interviewQuestion('designer');
+// teacherQuestion('John');
+// designerQuestion('John');
+
+// interviewQuestion('teacher')('Mark');
+
+
+/******************************************************
+ Lecture 67 - Immediately Invoked Function Expressions (IIFE)
+
+*/
+function game (){
+    var score = Math.random() * 10;
+    console.log(score >= 5);
 }
+game();
 
-var teacherQuestion = interviewQuestion('teacher');
-var designerQuestion = interviewQuestion('designer');
-teacherQuestion('John');
-designerQuestion('John');
-
-interviewQuestion('teacher')('Mark');
+(function() {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+})();
