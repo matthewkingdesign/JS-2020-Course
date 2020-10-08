@@ -476,32 +476,67 @@ When we try and access a property or methos JS will look for the the method or p
             console.log(i + ': ' + this.answers[i]);
         }
     }
-    
-    Question.prototype.checkAnswer = function(ans){
+    // we add a second parameter to this function.
+    Question.prototype.checkAnswer = function(ans, callback){
+
+        var sc;
+
         if(ans === this.correct){
             console.log('Correct Answer!');
+            sc = callback(true);
         } else {
             console.log('Naahhhh mate');
+            sc = callback(false);
         }
+        this.displayScore(sc);
     }
+
+    Question.prototype.displayScore = function(score){
+        console.log('Your current score is: ' + score);
+        console.log('------------------------------');
+    }
+
     // Task 2 Use the constructor to create multiple questions. 
     // We used an array for the answers and then a number for the correct answer.
     var q1 = new Question('Is JavaScript the coolest', ['Yes', 'No'], 0);
     var q2 = new Question('What is the course instructors name', ['Dave', 'John', 'Jonas'], 2);
     var q3 = new Question('What does best describe coding', ['Boring', 'Hard', 'Fun', 'Tedious'], 2);
-    
-    // Task 3
+     // Task 3
     // Store questions in an array
     var questions = [q1, q2, q3];
-    // Task 4 Part 1
-    // Select a random question number between 0 and the length of the question array.
-    var n = Math.floor(Math.random() * questions.length);
     
-    // Task 4 Part 2 call the question array with the var n which is the random number.
-    // SO this line of code says, get a random questio in the array (thanks to the n var then that q1 var is actually and insatnce of the Question constructor, then call the display method on that)
-    questions[n].displayQuestion();
-    // Store the answer the user gives us in the var answer
-    var answer = parseInt(prompt('please select the correct answer')); 
-    // We then call the questions again and call checkAnswer method on that and pass the user 
-    questions[n].checkAnswer(answer);
+    function score(){
+        var sc = 0;
+        return function(correct) {
+            if(correct) {
+                sc++;
+            }
+            return sc;
+        }
+    }
+
+    var keepScore = score();
+
+
+    // Task 8 - created a function with the game logi in it so we can call it over and over again
+    function nextQuestion () {
+        // Task 4 Part 1
+        // Select a random question number between 0 and the length of the question array.
+        var n = Math.floor(Math.random() * questions.length);
+        // Task 4 Part 2 call the question array with the var n which is the random number.
+        // SO this line of code says, get a random questio in the array (thanks to the n var then that q1 var is actually and insatnce of the Question constructor, then call the display method on that)
+        questions[n].displayQuestion();
+        // Store the answer the user gives us in the var answer
+        var answer = prompt('please select the correct answer'); 
+    
+        if (answer !== 'exit'){
+          
+            // We then call the questions again and call checkAnswer method on that and pass the user answer, which we now convert into a number 
+            // Moved parseInt down here as this is when we want a number, if the game is being played
+            questions[n].checkAnswer(parseInt(answer), keepScore);
+            nextQuestion();
+        }
+    }
+    nextQuestion();
+
 })();
