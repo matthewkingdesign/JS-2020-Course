@@ -490,7 +490,6 @@ When we try and access a property or methos JS will look for the the method or p
         }
         this.displayScore(sc);
     }
-
     Question.prototype.displayScore = function(score){
         console.log('Your current score is: ' + score);
         console.log('------------------------------');
