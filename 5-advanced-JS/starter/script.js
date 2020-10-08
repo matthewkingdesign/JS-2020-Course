@@ -69,9 +69,9 @@ When we try and access a property or methos JS will look for the the method or p
 //     job: 'teacher'
 // };
 
-// Function Constructor, always have capitals as there name. 
+// // Function Constructor, always have capitals as there name. 
 
-// we use this to attach the varibales to this variables execution context. 
+// // we use this to attach the varibales to this variables execution context. 
 // var Person = function(name, yearOfBirth, job){
 //     // so this name is = the name we pass in the parameter when we call it
 //     this.name = name;
@@ -402,6 +402,54 @@ When we try and access a property or methos JS will look for the the method or p
 
 // 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 
+// task 1 - create the constructor
+
+// (function(){
+//     function Question(question, answers, correct){
+//         this.question = question;
+//         this.answers = answers;
+//         this.correct = correct;
+//     }
+    
+//     //Task 4 Part 3 - create a method on the Question Objects prototype
+    
+//     Question.prototype.displayQuestion = function() {
+//         console.log(this.question);
+    
+//         for (var i = 0; i < this.answers.length; i++) {
+//             console.log(i + ': ' + this.answers[i]);
+//         }
+//     }
+    
+//     Question.prototype.checkAnswer = function(ans){
+//         if(ans === this.correct){
+//             console.log('Correct Answer!');
+//         } else {
+//             console.log('Naahhhh mate');
+//         }
+//     }
+//     // Task 2 Use the constructor to create multiple questions. 
+//     // We used an array for the answers and then a number for the correct answer.
+//     var q1 = new Question('Is JavaScript the coolest', ['Yes', 'No'], 0);
+//     var q2 = new Question('What is the course instructors name', ['Dave', 'John', 'Jonas'], 2);
+//     var q3 = new Question('What does best describe coding', ['Boring', 'Hard', 'Fun', 'Tedious'], 2);
+    
+//     // Task 3
+//     // Store questions in an array
+//     var questions = [q1, q2, q3];
+//     // Task 4 Part 1
+//     // Select a random question number between 0 and the length of the question array.
+//     var n = Math.floor(Math.random() * questions.length);
+    
+//     // Task 4 Part 2 call the question array with the var n which is the random number.
+//     // SO this line of code says, get a random questio in the array (thanks to the n var then that q1 var is actually and insatnce of the Question constructor, then call the display method on that)
+//     questions[n].displayQuestion();
+//     // Store the answer the user gives us in the var answer
+//     var answer = parseInt(prompt('please select the correct answer')); 
+//     // We then call the questions again and call checkAnswer method on that and pass the user 
+//     questions[n].checkAnswer(answer);
+// })();
+
 // --- Expert level ---
 
 // 8. After you display the result, display the next random question, so that the game never ends (Hint: write a function for this and call it right after displaying the result)
@@ -412,3 +460,48 @@ When we try and access a property or methos JS will look for the the method or p
 
 // 11. Display the score in the console. Use yet another method for this.
 
+(function(){
+    function Question(question, answers, correct){
+        this.question = question;
+        this.answers = answers;
+        this.correct = correct;
+    }
+    
+    //Task 4 Part 3 - create a method on the Question Objects prototype
+    
+    Question.prototype.displayQuestion = function() {
+        console.log(this.question);
+    
+        for (var i = 0; i < this.answers.length; i++) {
+            console.log(i + ': ' + this.answers[i]);
+        }
+    }
+    
+    Question.prototype.checkAnswer = function(ans){
+        if(ans === this.correct){
+            console.log('Correct Answer!');
+        } else {
+            console.log('Naahhhh mate');
+        }
+    }
+    // Task 2 Use the constructor to create multiple questions. 
+    // We used an array for the answers and then a number for the correct answer.
+    var q1 = new Question('Is JavaScript the coolest', ['Yes', 'No'], 0);
+    var q2 = new Question('What is the course instructors name', ['Dave', 'John', 'Jonas'], 2);
+    var q3 = new Question('What does best describe coding', ['Boring', 'Hard', 'Fun', 'Tedious'], 2);
+    
+    // Task 3
+    // Store questions in an array
+    var questions = [q1, q2, q3];
+    // Task 4 Part 1
+    // Select a random question number between 0 and the length of the question array.
+    var n = Math.floor(Math.random() * questions.length);
+    
+    // Task 4 Part 2 call the question array with the var n which is the random number.
+    // SO this line of code says, get a random questio in the array (thanks to the n var then that q1 var is actually and insatnce of the Question constructor, then call the display method on that)
+    questions[n].displayQuestion();
+    // Store the answer the user gives us in the var answer
+    var answer = parseInt(prompt('please select the correct answer')); 
+    // We then call the questions again and call checkAnswer method on that and pass the user 
+    questions[n].checkAnswer(answer);
+})();
